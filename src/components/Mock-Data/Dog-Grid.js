@@ -1,56 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DogCard } from './Dog-Card';
-import { MenuItem, Icon, Button, Grid} from '@mui/material';
-// import Select, { SelectChangeEvent } from '@mui/material/Select';
-// import AddCircleIcon from '@mui/icons-material/AddCircle';
-
+import { dog } from  './Mock-Dog'
+import { Grid } from '@mui/material';
+import axios from "axios";
 export const DogGrid = () => {
+  console.log('INDG')
+  const [getDogData, setDogData] = useState([])
 
-  const displayCards = () => {
+  useEffect(() => {
+    const options = {
+      headers: { 'x-api-key': process.env.DOG_API_KEY }
+    };
+    const fetchDogData = () =>{
+      axios.get(
+        'https://api.thedogapi.com/v1/breeds', options
+      )
+        .then((data) => {
+          const numberArr = []
 
-  }
+          for(let i = 0; i < 24; i++ ) numberArr.push(Math.round(Math.random()*171))
 
-  //20 cards per page - static
-  //loop through cards, filling w info generated
-  //
+          const copyDogDataArr = numberArr.map(el => data.data[el]) 
 
+          setDogData([...copyDogDataArr])
+        })
+    }
+    fetchDogData()}, []) 
+    console.log("WEEP",getDogData)
+
+    console.log( "HELP!!",getDogData[0])
+    
   return (
-      <Grid container direction="row">
-        <Grid >
-
-        <DogCard/>
-
-        </Grid>
-
-        <Grid >
-
-        <DogCard/>
-
-        </Grid>
-        <Grid>
-
-        <DogCard/>
-
-        </Grid>
-
-        <Grid >
-
-        <DogCard/>
-
-        </Grid>
-
-        <Grid >
-
-        <DogCard/>
-
-        </Grid>
-
-        <Grid >
-
-        <DogCard/>
-
-        </Grid>
+   
+    <Grid container direction="row">
+       {getDogData.map(el => {
+        const {firstName, sex} = dog();
+        return <DogCard firstName = {firstName} name = {el.name} sex = {sex} age = {Math.round(Math.random()*13)} temperament = {el.temperament} image = {el.image.url}  id = {el.id} />
+       })}
         
-      </Grid>
+    </Grid>
   )
 }
+

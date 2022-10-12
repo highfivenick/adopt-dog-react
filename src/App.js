@@ -5,6 +5,7 @@ import { DogGrid } from './components/Mock-Data/Dog-Grid';
 import { DogCard } from './components/Mock-Data/Dog-Card';
 import { optionGroupUnstyledClasses } from '@mui/base';
 import React from 'react'
+console.log('INAJ')
 function App() {
   for(let i = 0; i < 2; i++) {
     console.log(dog())
