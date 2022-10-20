@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-export const DogCard = ({name, sex, age, temperament, image,  id, firstName }) => {
+export const DogCard = ({breed, sex, age, temperament, image,  id, firstName }) => {
   return (
       <Card sx={{ maxWidth: 345 }} id = {id}>
         <CardActionArea>
@@ -19,8 +19,8 @@ export const DogCard = ({name, sex, age, temperament, image,  id, firstName }) =
             <Typography gutterBottom variant="h5" component="div" firstName = {firstName} >
               {firstName}
             </Typography>
-            <Typography variant="body2" color="text.secondary" name = {name} sex = {sex} age = {age} temperament = {temperament}>
-            Breed: {name} Sex: {sex} Age: {age} Temperament: {temperament}
+            <Typography variant="body2" color="text.secondary" breed = {breed} sex = {sex} age = {age} temperament = {temperament}>
+            Breed: {breed} Sex: {sex} Age: {age} Temperament: {temperament}
             </Typography>
           </CardContent>
         </CardActionArea>
