@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       {/* <DropdownRadio dogInfoArr = {getDogData} /> */}
-      <DropdownRadio defaultVal='All' value ='Age' value1='Age up' value2= 'Age down' />
+      <DropdownRadio defaultVal='All' value ='Age' value1='Age up' value2= 'Age down' label1 = 'Female' label2 = 'Male' label3 = 'All' />
     </>
   );
 }

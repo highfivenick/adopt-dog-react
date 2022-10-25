@@ -10,14 +10,15 @@ import FormLabel from '@mui/material/FormLabel';
 import Select from '@mui/material/Select';
 import { DogGrid } from './Dog-Grid';
 import { dog } from './Mock-Dog'
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import axios from "axios";
 
 export const DropdownRadio = ({ id, value, defaultVal, dropLabel, value1, value2, label, label1, label2, label3 }) => {
   console.log('INDG')
-  const [getDogData, setDogData] = useState([])
-  const [getTargetVal, setTargetVal] = useState('')
+  const [getDogData, setDogData] = useState(['default'])
+  const [getTargetVal, setTargetVal] = useState('All')
 
+  let stateCopy = useRef([])
   useEffect(() => {
     const options = {
       headers: { 'x-api-key': process.env.DOG_API_KEY }
@@ -32,12 +33,15 @@ export const DropdownRadio = ({ id, value, defaultVal, dropLabel, value1, value2
           for (let i = 0; i < 24; i++) numberArr.push(Math.round(Math.random() * 171))
 
           let copyDogDataArr = numberArr.map(el => data.data[el])
+
           copyDogDataArr = copyDogDataArr.forEach(el => {
             const { firstName, sex, age } = dog();
             el.age = age
             el.name = firstName
             el.sex = sex
+           // let stateCopy = useRef([...copyDogDataArr])
             setDogData([...copyDogDataArr])
+            stateCopy.current = [...copyDogDataArr]
           })
         })
     }
@@ -45,27 +49,58 @@ export const DropdownRadio = ({ id, value, defaultVal, dropLabel, value1, value2
     fetchDogData()
   }, [])
   //console.log('rsvrsvwrfd', dogInfoArr)
-  const stateCopy = getDogData
+
 
   const sortLoHi = (arr) => {
-    arr.sort((a, b) => {
-      return a.age < b.age ? a : b
+    return arr.sort((a, b) => {
+      return a.age - b.age
     })
   }
 
-  useEffect((event) => {
-        console.log(event.target.value, 'jfjvnef  ddd  d')
+  const sortHiLo = (arr) => {
+    return arr.sort((a, b) => {
+      return b.age - a.age
+    })
+  }
+
+  const filterFemale = (arr) => {
+    return arr.filter(el => el.sex === 'female')
+  }
+
+  const filterMale = (arr) => {
+    return arr.filter(el => el.sex === 'male')
+  }
+
+  const handleSort = (event) => {
+    const selectedValue = event.target.value
     setTargetVal(event.target.value)
-    if (getTargetVal === { value1 }) {
+    if (selectedValue === 'Age up') {
       setDogData(sortLoHi(getDogData))
-    } else if (getTargetVal === { value2 }) {
-      setDogData(getDogData.sort((a, b) => a.age > b.age))
-    }
-    
-  }, [getTargetVal])
+    } else if (selectedValue === 'Age down') {
+      setDogData(sortHiLo(getDogData))
+    } else if (selectedValue === 'All')
+      setDogData(stateCopy.current)
+      console.log('copy', stateCopy.current)
+  }
+
+  // useEffect((event) => {
+  //   handleSort(event)
+  // }, [getDogData]) 
+  
+  console.log('copy', stateCopy)
+
   console.log('ffffff', getDogData)
 
-  //console.log('here, getDogData.map(el => el.age))
+  const handleFilter = (event) => {
+    const selectedValue = event.target.value
+    setTargetVal(event.target.value)
+    if (selectedValue === 'Female') {
+      setDogData(filterFemale(getDogData))
+    } else if (selectedValue === 'Male') {
+      setDogData(filterMale(getDogData))
+    } else if (selectedValue === 'All')
+      setDogData(stateCopy.current)
+  }
 
   return (
     <>
@@ -76,7 +111,7 @@ export const DropdownRadio = ({ id, value, defaultVal, dropLabel, value1, value2
             id={id}
             value={getTargetVal}
             labelId={dropLabel}
-            //onChange={handleChange}
+            onChange={handleSort}
           >
             <MenuItem value={defaultVal}>
               <em>{defaultVal}</em>
@@ -91,9 +126,10 @@ export const DropdownRadio = ({ id, value, defaultVal, dropLabel, value1, value2
           <FormLabel id="">{label}</FormLabel>
           <RadioGroup
             aria-labelledby=""
-            defaultValue={label1}
+            defaultValue={label3}
             name=""
             row
+            onChange={handleFilter}
           >
             <FormControlLabel value={label1} control={<Radio />} label={label1} />
             <FormControlLabel value={label2} control={<Radio />} label={label2} />

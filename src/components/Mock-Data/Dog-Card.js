@@ -6,11 +6,11 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 export const DogCard = ({breed, sex, age, temperament, image,  id, firstName }) => {
   return (
-      <Card sx={{ maxWidth: 345 }} id = {id}>
+      <Card sx={{ maxWidth: 330 }} id = {id}>
         <CardActionArea>
           <CardMedia
             component="img"
-            height="200"
+            height="300"
             image={image}
             alt="dog photo"
            // style={{objectFit: fill }}
