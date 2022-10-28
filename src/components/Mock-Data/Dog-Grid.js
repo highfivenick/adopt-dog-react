@@ -7,10 +7,11 @@ export const DogGrid = ({ dogInfoArr }) => {
       {/* <DropdownRadio dogInfoArr = {getDogData} dogInfoSetter = {setDogData}/> */}
       {dogInfoArr.map(el => {
         return <Grid xs={3}>
-          <DogCard firstName={el.firstName} breed={el.name} sex={el.sex} age={el.age} temperament={el.temperament} id={el.id} />
+          <DogCard firstName={el.firstName} image = {el.image?.url?? ''}  breed={el.name} sex={el.sex} age={el.age} temperament={el.temperament} id={el.id} />
         </ Grid>
       })}
     </Grid>
   )
 }
-//image = {el.image.url}
+//null safing
+//useReducer()

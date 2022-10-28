@@ -4,7 +4,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
+//import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Select from '@mui/material/Select';
@@ -14,12 +14,13 @@ import React, { useRef, useState, useEffect } from 'react';
 import axios from "axios";
 
 export const DropdownRadio = ({ id, value, defaultVal, dropLabel, value1, value2, label, label1, label2, label3 }) => {
-  console.log('INDG')
+  //console.log('INDG')
   const [getDogData, setDogData] = useState(['default'])
   const [getTargetVal, setTargetVal] = useState('All')
 
   let stateCopy = useRef([])
   useEffect(() => {
+    console.log('times run')
     const options = {
       headers: { 'x-api-key': process.env.DOG_API_KEY }
     };
@@ -34,15 +35,13 @@ export const DropdownRadio = ({ id, value, defaultVal, dropLabel, value1, value2
 
           let copyDogDataArr = numberArr.map(el => data.data[el])
 
-          copyDogDataArr = copyDogDataArr.forEach(el => {
+          copyDogDataArr = copyDogDataArr.map(el => {
             const { firstName, sex, age } = dog();
-            el.age = age
-            el.name = firstName
-            el.sex = sex
+            return {...el, age, sex, name: firstName}
            // let stateCopy = useRef([...copyDogDataArr])
-            setDogData([...copyDogDataArr])
-            stateCopy.current = [...copyDogDataArr]
           })
+          setDogData([...copyDogDataArr])
+          stateCopy.current = [...copyDogDataArr]
         })
     }
     //reset state each time
@@ -78,18 +77,18 @@ export const DropdownRadio = ({ id, value, defaultVal, dropLabel, value1, value2
       setDogData(sortLoHi(getDogData))
     } else if (selectedValue === 'Age down') {
       setDogData(sortHiLo(getDogData))
-    } else if (selectedValue === 'All')
-      setDogData(stateCopy.current)
-      console.log('copy', stateCopy.current)
+    } else if (selectedValue === 'All'){
+      setDogData([...stateCopy.current])
+    }
   }
 
   // useEffect((event) => {
   //   handleSort(event)
   // }, [getDogData]) 
   
-  console.log('copy', stateCopy)
+  // console.log('copy', stateCopy)
 
-  console.log('ffffff', getDogData)
+  // console.log('ffffff', getDogData)
 
   const handleFilter = (event) => {
     const selectedValue = event.target.value
@@ -98,8 +97,9 @@ export const DropdownRadio = ({ id, value, defaultVal, dropLabel, value1, value2
       setDogData(filterFemale(getDogData))
     } else if (selectedValue === 'Male') {
       setDogData(filterMale(getDogData))
-    } else if (selectedValue === 'All')
-      setDogData(stateCopy.current)
+    } else if (selectedValue === 'All'){
+      setDogData([...stateCopy.current])
+    }
   }
 
   return (
