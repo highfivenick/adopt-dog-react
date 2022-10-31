@@ -46,6 +46,7 @@ export const DropdownRadio = ({ id, value, defaultVal, dropLabel, value1, value2
           copyDogDataArr.forEach(el => {
            return el.sex === 'female' ? el.sex = 'Female' : el.sex = 'Male'
           })
+
           setDogData([...copyDogDataArr])
           stateCopy.current = [...copyDogDataArr]
         })
@@ -92,9 +93,9 @@ export const DropdownRadio = ({ id, value, defaultVal, dropLabel, value1, value2
     const selectedValue = event.target.value
     setTargetVal(event.target.value)
     if (selectedValue === 'Female') {
-      setDogData(filterFemale(getDogData))
+      setDogData(filterFemale([...stateCopy.current]))
     } else if (selectedValue === 'Male') {
-      setDogData(filterMale(getDogData))
+      setDogData(filterMale([...stateCopy.current]))
     } else if (selectedValue === 'All'){
       setDogData([...stateCopy.current])
     }
