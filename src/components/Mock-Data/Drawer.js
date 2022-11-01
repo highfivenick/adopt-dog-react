@@ -7,7 +7,7 @@ import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 
 
-export const TemporaryDrawer = ({component}) => {
+export const TemporaryDrawer = ({ component }) => {
   const [state, setState] = React.useState({
     left: false,
     bottom: false,
@@ -29,14 +29,13 @@ export const TemporaryDrawer = ({component}) => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-          <ListItem key={1} disablePadding>
-           {component}
-          </ListItem>
+        <ListItem key={1} disablePadding>
+          {component}
+        </ListItem>
       </List>
       <Divider />
     </Box>
   );
-  
 
   return (
     <div>

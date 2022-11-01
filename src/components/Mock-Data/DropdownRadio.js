@@ -4,7 +4,6 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-//import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Select from '@mui/material/Select';
@@ -13,8 +12,7 @@ import { dog } from './Mock-Dog'
 import React, { useRef, useState, useEffect } from 'react';
 import axios from "axios";
 
-export const DropdownRadio = ({ id, value, defaultVal, dropLabel, value1, value2, label, label1, label2, label3 }) => {
-  //console.log('INDG')
+export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label, label1, label2, label3 }) => {
   const [getDogData, setDogData] = useState(['default'])
   const [getTargetVal, setTargetVal] = useState('All')
 
@@ -51,11 +49,8 @@ export const DropdownRadio = ({ id, value, defaultVal, dropLabel, value1, value2
           stateCopy.current = [...copyDogDataArr]
         })
     }
-    //reset state each time
     fetchDogData()
   }, [])
-  console.log('rsvrsvwrfd',  getDogData)
-
 
   const sortAgeLoHi = (arr) => {
     return arr.sort((a, b) => {
