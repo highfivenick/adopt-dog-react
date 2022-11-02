@@ -97,7 +97,7 @@ export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label
   }
 
   return (
-    <>
+    <div className='background-image'>
       <div style={{textAlign: 'center',
                    marginTop: '3vh'}}>
         <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -137,7 +137,6 @@ export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label
       <div>
         <DogGrid dogInfoArr={getDogData} />
       </div>
-    </>
+    </div>
   )
 }
-

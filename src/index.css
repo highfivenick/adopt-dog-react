@@ -8,6 +8,15 @@ body {
   background-color: #DDF3FF;
 }
 
+.background-image {
+  background: url('./images/transparentLogo.png') repeat;
+  background-size: 10%;
+}
+
+.background-image:before {
+    background: #ddf3ff;
+  }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
