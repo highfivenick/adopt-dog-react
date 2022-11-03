@@ -14,8 +14,7 @@ import axios from "axios";
 
 export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label, label1, label2, label3 }) => {
   const [getDogData, setDogData] = useState(['default'])
-  const [getTargetVal, setTargetVal] = useState('All')
-
+  const [getTargetVal, setTargetVal] = useState('Age ↕︎')
   let stateCopy = useRef([])
   useEffect(() => {
     const options = {
@@ -77,16 +76,16 @@ export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label
     setTargetVal(event.target.value)
     if (selectedValue === 'Age ↑') {
       setDogData(sortAgeLoHi(getDogData))
+      console.log('val', 'Age ↑', selectedValue )
     } else if (selectedValue === 'Age ↓') {
       setDogData(sortAgeHiLo(getDogData))
-    } else if (selectedValue === 'All'){
+    } else if (selectedValue === 'Age ↕︎'){
       setDogData([...stateCopy.current])
     }
   }
 
   const handleFilter = (event) => {
     const selectedValue = event.target.value
-    setTargetVal(event.target.value)
     if (selectedValue === 'Female') {
       setDogData(filterFemale([...stateCopy.current]))
     } else if (selectedValue === 'Male') {
@@ -106,7 +105,7 @@ export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label
           <InputLabel id={id}>'{dropLabel}'</InputLabel>
           <Select
             id={id}
-            value={dropLabel}
+            value={getTargetVal}
             label={dropLabel}
             onChange={handleAgeSort}
             style={{backgroundColor: '#fafafa'}}
