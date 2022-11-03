@@ -99,7 +99,9 @@ export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label
   return (
     <div className='background-image'>
       <div style={{textAlign: 'center',
-                   marginTop: '3vh'}}>
+                   marginTop: '3vh',
+                   backgroundColor: '#ddf3ffbd'
+                   }}>
         <FormControl sx={{ m: 1, minWidth: 120 }}>
           <InputLabel id={id}>'{dropLabel}'</InputLabel>
           <Select
@@ -107,6 +109,7 @@ export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label
             value={dropLabel}
             label={dropLabel}
             onChange={handleAgeSort}
+            style={{backgroundColor: '#fafafa'}}
           >
             <MenuItem value={defaultVal}>
               <em>{defaultVal}</em>
@@ -117,7 +120,9 @@ export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label
         </FormControl>
       </div>
       <div style={{textAlign: 'center',
-                   marginBottom: '1vh'}}>
+                   marginBottom: '1vh',
+                   backgroundColor: '#ddf3ffa3'
+                   }}>
         <FormControl>
           <FormLabel id="">{label}</FormLabel>
           <RadioGroup

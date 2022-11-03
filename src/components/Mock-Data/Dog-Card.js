@@ -41,7 +41,7 @@ export const DogCard = ({ sex, age, image, id, firstName }) => {
             {sex}, {age} years old
           </Typography>
           <Typography textAlign={'center'} variant="body2" color="text.secondary" email={email} fName={fName}>
-            Contact {fName} at {email} to learn more about adoption!
+            Contact {fName} at <a href = {`mailto:${email}?subject=Thank you for visiting my site! &body = This is a website I built while learning React. I don't think I'll be doing front-end in Vanilla JS anymore. I hope you enjoy! Have a lovely day.`}>{email}</a> to learn more about adoption!
           </Typography>
         </CardContent>
       </CardActionArea>
