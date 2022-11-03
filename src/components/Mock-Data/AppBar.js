@@ -7,14 +7,12 @@ import transparentLogo from '../../images/transparentLogo.png'
 import transparentLogoText from '../../images/transparentLogoText.png'
 export const ButtonAppBar = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1}}>
       <AppBar position="static"
         style={{
           height: '9vh',
           paddingTop: '0.5vh',
-          borderBottom: '#218cca96',
-          borderStyle: 'inset',
-          background: 'linear-gradient(45deg, rgb(250, 250, 250) 0%, rgba(98, 202, 228, 0.65) 25%, hsl(114deg 70% 44%) 50%, rgba(98, 202, 228, 0.65) 75%, rgb(250, 250, 250) 100%)'
+          background: 'linear-gradient(45deg, rgb(250, 250, 250) 0%, rgba(98, 202, 228, 0.65) 20%, #07a207e0 50%, rgba(98, 202, 228, 0.65) 80%, rgb(250, 250, 250) 100%)'
         }}>
         <Toolbar style={{
           backgroundImage: `url(${transparentLogoText})`,

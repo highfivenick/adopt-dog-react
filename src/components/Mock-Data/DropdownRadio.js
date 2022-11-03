@@ -29,19 +29,19 @@ export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label
 
           while (numberArr.length < 24) {
             let randomNum = Math.round(Math.random() * 171)
-            if(!numberArr.includes(randomNum)){
+            if (!numberArr.includes(randomNum)) {
               numberArr.push(randomNum)
             }
           }
-          
+
           let copyDogDataArr = numberArr.map(el => data.data[el])
 
           copyDogDataArr = copyDogDataArr.map(el => {
             const { firstName, sex, age } = dog();
-            return {...el, age, sex, name: firstName}
+            return { ...el, age, sex, name: firstName }
           })
           copyDogDataArr.forEach(el => {
-           return el.sex === 'female' ? el.sex = 'Female' : el.sex = 'Male'
+            return el.sex === 'female' ? el.sex = 'Female' : el.sex = 'Male'
           })
 
           setDogData([...copyDogDataArr])
@@ -76,10 +76,10 @@ export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label
     setTargetVal(event.target.value)
     if (selectedValue === 'Age ↑') {
       setDogData(sortAgeLoHi(getDogData))
-      console.log('val', 'Age ↑', selectedValue )
+      console.log('val', 'Age ↑', selectedValue)
     } else if (selectedValue === 'Age ↓') {
       setDogData(sortAgeHiLo(getDogData))
-    } else if (selectedValue === 'Age ↕︎'){
+    } else if (selectedValue === 'Age ↕︎') {
       setDogData([...stateCopy.current])
     }
   }
@@ -90,17 +90,22 @@ export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label
       setDogData(filterFemale([...stateCopy.current]))
     } else if (selectedValue === 'Male') {
       setDogData(filterMale([...stateCopy.current]))
-    } else if (selectedValue === 'All'){
+    } else if (selectedValue === 'All') {
       setDogData([...stateCopy.current])
     }
   }
 
   return (
-    <div className='background-image'>
-      <div style={{textAlign: 'center',
-                   marginTop: '3vh',
-                   backgroundColor: '#ddf3ffbd'
-                   }}>
+    <div className='background-image' style={{
+      border: '.7rem ridge #7ab9de',
+      borderTop: '0',
+      borderBottom: '0'
+    }}>
+      <div style={{
+        textAlign: 'center',
+        paddingTop: '3vh',
+        backgroundColor: '#ddf3ffbd'
+      }}>
         <FormControl sx={{ m: 1, minWidth: 120 }}>
           <InputLabel id={id}>'{dropLabel}'</InputLabel>
           <Select
@@ -108,7 +113,7 @@ export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label
             value={getTargetVal}
             label={dropLabel}
             onChange={handleAgeSort}
-            style={{backgroundColor: '#fafafa'}}
+            style={{ backgroundColor: '#fafafa' }}
           >
             <MenuItem value={defaultVal}>
               <em>{defaultVal}</em>
@@ -118,10 +123,11 @@ export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label
           </Select>
         </FormControl>
       </div>
-      <div style={{textAlign: 'center',
-                   marginBottom: '1vh',
-                   backgroundColor: '#ddf3ffa3'
-                   }}>
+      <div style={{
+        textAlign: 'center',
+        marginBottom: '1vh',
+        backgroundColor: '#ddf3ffa3'
+      }}>
         <FormControl>
           <FormLabel id="">{label}</FormLabel>
           <RadioGroup

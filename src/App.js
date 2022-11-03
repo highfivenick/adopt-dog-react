@@ -6,12 +6,12 @@ import React from 'react'
 function App() {
   return (
     <>
-    <header>
-      <ButtonAppBar />
-    </header>
-      <DropdownRadio defaultVal='Age ↕︎' value='Age' value1='Age ↑' value2='Age ↓' label1='Female' label2='Male' label3='All' dropLabel='Age ↕︎'/>
-      <footer>
-      <ButtonAppBar />
+      <header style={{borderBottom: '.5rem groove #218cca96'}}>
+        <ButtonAppBar />
+      </header>
+      <DropdownRadio defaultVal='Age ↕︎' value='Age' value1='Age ↑' value2='Age ↓' label1='Female' label2='Male' label3='All' dropLabel='Age ↕︎' />
+      <footer  style={{borderTop: '.5rem ridge #218cca96'}}>
+        <ButtonAppBar />
       </footer>
     </>
   );
