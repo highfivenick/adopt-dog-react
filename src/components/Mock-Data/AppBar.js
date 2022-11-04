@@ -12,7 +12,7 @@ export const ButtonAppBar = () => {
         style={{
           height: '9vh',
           paddingTop: '0.5vh',
-          background: 'linear-gradient(45deg, rgb(250, 250, 250) 0%, rgba(98, 202, 228, 0.65) 20%, #07a207e0 50%, rgba(98, 202, 228, 0.65) 80%, rgb(250, 250, 250) 100%)'
+          background: 'linear-gradient(45deg, rgb(250, 250, 250) 0%, rgba(98, 202, 228, 0.65) 20%, #67bce0 50%, rgba(98, 202, 228, 0.65) 80%, rgb(250, 250, 250) 100%)'
         }}>
         <Toolbar style={{
           backgroundImage: `url(${transparentLogoText})`,
