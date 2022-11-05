@@ -9,25 +9,33 @@ body {
 }
 
 .background-image {
-  background: url('./images/smallLogo.png') repeat;
-  background-size: 4%;
+  background: url('./images/628235.jpg') ;
+  /* background-size: 4%; */
 }
 
 .background-image:before {
     background: #ddf3ff;
   }
 
-  .css-1a5icme.Mui-checked {
-    color: #27a91a;
-  }
+.css-1a5icme.Mui-checked {
+  color: #27a91a;
+}
+
+.css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
+  color: white;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-#root > div > div:nth-child(2) > div > div > label:nth-child(1) > span.MuiButtonBase-root.MuiRadio-root.MuiRadio-colorPrimary.PrivateSwitchBase-root.MuiRadio-root.MuiRadio-colorPrimary.Mui-checked.MuiRadio-root.MuiRadio-colorPrimary.css-vqmohf-MuiButtonBase-root-MuiRadio-root > span.css-hyxlzm > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-1hbvpl3-MuiSvgIcon-root, #root > div > div:nth-child(2) > div > div > label:nth-child(1) > span.MuiButtonBase-root.MuiRadio-root.MuiRadio-colorPrimary.PrivateSwitchBase-root.MuiRadio-root.MuiRadio-colorPrimary.Mui-checked.MuiRadio-root.MuiRadio-colorPrimary.css-vqmohf-MuiButtonBase-root-MuiRadio-root > span.css-hyxlzm > svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-11zohuh-MuiSvgIcon-root  {
-  fill: #27a91a;
+.css-vqmohf-MuiButtonBase-root-MuiRadio-root{
+  color: #27a91a;
 }
+.css-vqmohf-MuiButtonBase-root-MuiRadio-root.Mui-checked {
+  color: #27a91a;
+}
+
 
 
 a:link {

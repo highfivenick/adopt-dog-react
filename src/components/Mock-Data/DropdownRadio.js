@@ -104,7 +104,7 @@ export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label
       <div style={{
         textAlign: 'center',
         paddingTop: '3vh',
-        backgroundColor: '#ddf3ffbd'
+        // backgroundColor: '#ddf3ffbd'
       }}>
         <FormControl sx={{ m: 1, minWidth: 120 }}>
           <InputLabel id={id}>'{dropLabel}'</InputLabel>
@@ -126,7 +126,7 @@ export const DropdownRadio = ({ id, defaultVal, dropLabel, value1, value2, label
       <div style={{
         textAlign: 'center',
         marginBottom: '1vh',
-        backgroundColor: '#ddf3ffa3'
+        // backgroundColor: '#ddf3ffa3'
       }}>
         <FormControl>
           <FormLabel id="">{label}</FormLabel>

@@ -16,7 +16,7 @@ export const DogCard = ({ sex, age, image, id, firstName }) => {
       borderRadius: '10px',
       height: '23rem',
       backgroundColor: '#fafafa',
-      border: '.5rem #218cca96',
+      border: '.5rem rgb(71, 178, 67)',
       borderStyle: 'ridge',
       boxShadow: '15px 22px 20px 10px #3b7aa159'
 }}
